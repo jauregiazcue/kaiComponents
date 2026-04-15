@@ -1,0 +1,32 @@
+@use "sass:map";
+@use "vars.scss" as vars;
+@use "media.scss" as media;
+
+@mixin title($size : 32px,
+  $decoration: none,
+  $weight : 100,
+  $type : vars.$type-a,
+  $color : a) {
+
+  font-size: $size;
+  font-family: $type;
+  font-weight: $weight;
+  color: vars.getColor($color, "light");
+
+  body.dark-mode & {
+    color: vars.getColor($color, "dark");
+  }
+}
+
+h1 {
+  @include title($size : clamp(2rem, 5vw, 4rem), $color : a);
+
+}
+
+h2 {
+  @include title($size : clamp(1.5rem, 3vw, 2.5rem), $color : a);
+}
+
+h3 {
+  font-size: 1.5rem;
+}
