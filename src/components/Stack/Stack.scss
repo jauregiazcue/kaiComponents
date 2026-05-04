@@ -1,0 +1,22 @@
+@use "@style/vars.scss" as *;
+
+@mixin stack() {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 80%;
+  justify-content: center;
+  
+  &>* {
+    margin: $measure;
+  }
+}
+
+.stack-a {
+  @include stack();
+  padding: $measure * 2;
+}
+
+.stack-b {
+  @include stack();
+}

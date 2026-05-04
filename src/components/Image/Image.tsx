@@ -1,11 +1,11 @@
 import "./Image.scss";
 
-export interface MyImageProps {
+export interface ImagePayload {
   url: string,
   alt: string,
 }
 
-function Image(payload: MyImageProps) {
+function Image(payload: ImagePayload) {
   const { url, alt } = payload;
   return (<img className="image" src={url} alt={alt} />);
 }
