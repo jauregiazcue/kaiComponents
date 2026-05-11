@@ -1,32 +1,35 @@
+import type { Payload } from "@/interfaces/payload";
 import "./Link.scss";
 
 const LinkType = {
-  simple : 0,
-  navbar : 1,
+  simple: 0,
+  navbar: 1,
 }
 
 type LinkType = (typeof LinkType)[keyof typeof LinkType];
-export {LinkType};
+export { LinkType };
 
-export interface LinksPayload {
-  type : LinkType,
-  list : LinkPayload[]
+export interface LinksPayload extends Payload {
+  type: LinkType,
+  list: LinkPayload[]
 }
 
 export interface LinkPayload {
-  href: string,
+  href?: string,
   text: string,
+  onClick?(): unknown,
   [key: string]: unknown
 }
 
 function Link(payload: LinksPayload) {
-  const {type, list} = payload;
-  const linksClass : string = type == LinkType.simple ? "link" : "link-a";
+  const { id, type, list } = payload;
+  const linksClass: string = type == LinkType.simple ? "link" : "link-a";
   return (
-    <div className={linksClass}>
+    <div id={id} className={linksClass}>
       <>
-        {list.map((link: LinkPayload,index : number) => {
-          const { href, text, ...props } = link;
+        {list.map((link: LinkPayload, index: number) => {
+          const { href, text, onClick, ...props } = link;
+          if(onClick) return <a key={index} onClick={onClick} {...props}>{text}</a>
           return <a key={index} href={href} {...props}>{text}</a>
         })}
       </>

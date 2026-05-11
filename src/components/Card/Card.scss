@@ -8,18 +8,18 @@
   background-color: getColor(d, "light");
   border-radius: $border-radius-b;
   overflow: hidden;
-  
+
   &--header {
     min-height: $measure * 20;
     overflow: hidden;
-    background-color: red;
-    
+
   }
 
   &--body {
     height: $measure * 15;
     padding: $measure * 2;
     overflow: scroll;
+
     &--head {
       display: flex;
       justify-content: space-between;
@@ -44,5 +44,6 @@
 
   body.dark-mode & {
     background-color: getColor(e, "dark");
+    color: getColor(a, "dark");
   }
 }

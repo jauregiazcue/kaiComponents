@@ -1,23 +1,29 @@
-import { type PropsWithChildren } from "react";
-import "./Stack.scss";
 
-interface StackPayload extends PropsWithChildren {
-  fullPage?: boolean
+import "./Stack.scss";
+import type { PayloadWithChildren } from "@/interfaces/payload";
+
+interface StackPayload extends PayloadWithChildren {
+  fullPage?: boolean,
+  backgroundColor?: string,
+  backgroundImage?: string,
 }
 
-
 function Stack(payload: StackPayload) {
-  const { fullPage, children } = payload;
+  const { id, backgroundColor, backgroundImage, className, fullPage, children } = payload;
+  let { style } = payload;
+  style = style == undefined ?
+    backgroundImage ? { backgroundImage: `url(${backgroundImage})` } :
+      backgroundColor ? { backgroundColor: `${backgroundColor}` } :
+        {} : style;
 
-  if (fullPage) {
-    return <section className="stack-a">
+  const classNam = fullPage ? "stack-b" : "stack-a";
+  return <section id={id ? id : ""}
+    className={classNam + " " + className}
+    style={style}>
+    <div className= {classNam + "--body"}>
       {children}
-    </section>;
-  }
-
-  return <div className="stack-b">
-    {children}
-  </div>;
+    </div>
+  </section>;
 }
 
 export default Stack;

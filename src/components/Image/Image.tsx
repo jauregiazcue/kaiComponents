@@ -1,13 +1,14 @@
+import type { Payload } from "@/interfaces/payload";
 import "./Image.scss";
 
-export interface ImagePayload {
+export interface ImagePayload extends Payload {
   url: string,
   alt: string,
 }
 
 function Image(payload: ImagePayload) {
-  const { url, alt } = payload;
-  return (<img className="image" src={url} alt={alt} />);
+  const { id, url, alt } = payload;
+  return (<img id={id} className="image" src={url} alt={alt} />);
 }
 
 export default Image;

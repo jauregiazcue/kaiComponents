@@ -1,6 +1,8 @@
 @use "@style/vars.scss" as *;
 @use "@style/media.scss" as *;
 
+
+
 .link {
   display: flex;
   flex-direction: row;
@@ -44,7 +46,9 @@
   background-color: getColor(b, "light");
 
   body.dark-mode & {
-    background-color: getColor(a, "dark");
+    background-color: getColor(b, "dark");
+    color: getColor(a,"dark");
+    border-color: getColor(b,"dark");
   }
 
   & a {
@@ -61,11 +65,9 @@
       background-color: getColor(a, "light");
       color: getColor(b, "light");
 
-
-
       body.dark-mode & {
-        background-color: getColor(b, "dark");
-        color: getColor(a, "dark");
+        background-color: getColor(a, "dark");
+        color: getColor(b, "dark");
       }
     }
 
@@ -78,11 +80,11 @@
     transform: translate(-50%, 0);
 
     & a {
-      width:fit-content;
+      width: fit-content;
       min-width: 0;
 
-    padding-top: $measure;
-    padding-bottom: $measure;
+      padding-top: $measure;
+      padding-bottom: $measure;
       margin-right: $measure * 2;
     }
   }

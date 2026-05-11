@@ -85,6 +85,7 @@ video {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
+  transition: .5s;
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -129,13 +130,7 @@ table {
   border-spacing: 0;
 }
 
-& a:link,
-a:visited,
-a:hover,
-a:active {
-  color: white;
-  text-decoration: none;
-}
+
 
 section {
   min-height: 100vh;

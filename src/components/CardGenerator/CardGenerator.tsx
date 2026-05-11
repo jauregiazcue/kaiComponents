@@ -3,15 +3,15 @@ import Papa from "papaparse"
 import Stack from '@components/Stack/Stack';
 import type { CardPayload } from '@components/Card/Card';
 import Card from '@components/Card/Card';
-import type { LinkPayload } from '../Links/Link';
+import { LinkType, type LinkPayload } from '../Links/Link';
 
 
-export interface MyCardPayload extends CardPayload{
+export interface MyCardPayload extends CardPayload {
   url?: string,
   url2?: string
 }
 
-function CardGenerator() {
+function CardGenerator({id} : {id : string}) {
   const [objects, setObjects] = useState<MyCardPayload[]>([]);
   async function fetchCSV() {
     const response = await fetch('src/assets/Portfolio_Data.csv');
@@ -28,13 +28,12 @@ function CardGenerator() {
     fetchCSV();
   }, []);
 
-  return <Stack fullPage={true}>
+  return <Stack id={id} fullPage={false}>
     {objects.map((object: MyCardPayload, index: number) => {
       const { title, description, year, image, url, url2 } = object;
-      console.log(object);
-      const data: LinkPayload[] = [];
+      const list: LinkPayload[] = [];
       if (url) {
-        data.push({
+        list.push({
           href: url,
           target: "_blank",
           text: "Showcase"
@@ -42,17 +41,16 @@ function CardGenerator() {
       }
 
       if (url2) {
-        data.push({
+        list.push({
           href: url2,
           target: "_blank",
           text: "Repo"
         });
       }
-      object.links = data;
       return <Card key={index} title={title}
         year={year}
         image={image}
-        links={data}
+        links={{ list: list, type: LinkType.simple }}
         description={description} />
     })}
   </Stack>

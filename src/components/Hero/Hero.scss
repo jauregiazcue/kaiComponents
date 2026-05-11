@@ -4,13 +4,8 @@
 @use "@style/media.scss" as *;
 
 @mixin hero() {
-  background-color: getColor(d, "light");
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  background-color: getColor(f, "light");
+  margin: 0;
 
   body.dark-mode & {
     background-color: getColor(e, "dark");
@@ -19,7 +14,6 @@
 
 .hero {
   @include hero();
-
 }
 
 .hero-b {
@@ -42,26 +36,34 @@
 
 .hero-c {
   @include hero();
-  $biColor : getColor(d, "light");
+  $biColor : getColor(a, "dark");
+
+  body.dark-mode & {
+    $biColorDark : getColor(d, "light");
+    background-image: linear-gradient($biColorDark 1px,
+        transparent 1px,
+        transparent calc(100% - 1px), $biColorDark calc(100% - 1px)),
+      linear-gradient(90deg,
+        $biColorDark 1px,
+        transparent 1px,
+        transparent calc(100% - 1px),
+        $biColorDark calc(100% - 1px));
+  }
+
   background-image: linear-gradient($biColor 1px,
-      transparent 1px,
-      transparent calc(100% - 1px), $biColor calc(100% - 1px)),
-    linear-gradient(90deg,
-      $biColor 1px,
-      transparent 1px,
-      transparent calc(100% - 1px),
-      $biColor calc(100% - 1px));
+    transparent 1px,
+    transparent calc(100% - 1px), $biColor calc(100% - 1px)),
+  linear-gradient(90deg,
+    $biColor 1px,
+    transparent 1px,
+    transparent calc(100% - 1px),
+    $biColor calc(100% - 1px));
 
   background-size: 5vw 5vw;
   overflow: hidden;
 
   &--spotlight {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    margin: 0;
     background: radial-gradient(circle at center, rgba(0, 0, 0, 0) 0%, black 100%);
     z-index: 1;
 

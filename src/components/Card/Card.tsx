@@ -1,35 +1,29 @@
 
-import Link, { LinkType, type LinkPayload } from "@components/Links/Link";
+import Link, { type LinksPayload } from "@components/Links/Link";
 import "./Card.scss";
+import type { Payload } from "@/interfaces/payload";
 
 
-export interface CardPayload {
+export interface CardPayload extends Payload {
   /** The text to display inside the button */
   title: string;
   description: string;
   year: string;
   image?: string;
-  links: LinkPayload[],
+  links: LinksPayload,
 }
 
 
 function Card(payload: CardPayload) {
-  const { title, year, image, description, links } = payload;
-
-  let sectionStyle = {};
-  if (image) {
-    sectionStyle = {
-      backgroundImage: `url(${image})`,
-      backgroundPosition: 'center',
-      backgroundSize: 'cover',
-      backgroundRepeat: 'no-repeat'
-    }
-  } else {
-    sectionStyle = {
-      display: "none"
-    }
-  }
-  return <div className="card">
+  const { id, title, year, image, description, links } = payload;
+  const sectionStyle = image ? {
+    backgroundImage: `url(${image})`,
+    backgroundPosition: 'center',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat'
+  } : {};
+  
+  return <div id={id} className="card">
     <div className="card--header" style={sectionStyle} />
     <div className="card--body">
       <div className="card--body--head">
@@ -39,8 +33,8 @@ function Card(payload: CardPayload) {
       <p>{description}</p>
     </div>
     <div className="card--footer">
-      <Link list={links}
-        type={LinkType.simple} />
+      <Link list={links.list}
+        type={links.type} />
     </div>
   </div>;
 }
