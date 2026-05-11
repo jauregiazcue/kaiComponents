@@ -9,13 +9,12 @@ export interface CardPayload {
   description: string;
   year: string;
   image?: string;
-  url?: string,
-  url2?: string
+  links: LinkPayload[],
 }
 
 
 function Card(payload: CardPayload) {
-  const { title, year, image, description, url, url2 } = payload;
+  const { title, year, image, description, links } = payload;
 
   let sectionStyle = {};
   if (image) {
@@ -30,25 +29,6 @@ function Card(payload: CardPayload) {
       display: "none"
     }
   }
-
-  const data: LinkPayload[] = [];
-  if (url) {
-    data.push({
-      href: url,
-      target: "_blank",
-      text: "Showcase"
-    });
-  }
-
-  if (url2) {
-    data.push({
-      href: url2,
-      target: "_blank",
-      text: "Repo"
-    });
-  }
-
-
   return <div className="card">
     <div className="card--header" style={sectionStyle} />
     <div className="card--body">
@@ -59,7 +39,7 @@ function Card(payload: CardPayload) {
       <p>{description}</p>
     </div>
     <div className="card--footer">
-      <Link list={data}
+      <Link list={links}
         type={LinkType.simple} />
     </div>
   </div>;
