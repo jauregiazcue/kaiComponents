@@ -1,3 +1,5 @@
+@use "@style/vars.scss" as *;
+
 html,
 body,
 div,
@@ -85,7 +87,6 @@ video {
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
-  transition: .5s;
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -105,6 +106,10 @@ section {
 
 body {
   line-height: 1;
+
+  &.dark-mode  {
+    background-color: getColor(e, "dark");
+  }
 }
 
 ol,
@@ -143,4 +148,12 @@ section {
 
 html {
   scroll-behavior: smooth;
+}
+
+.fa-brands {
+  font-size: xx-large;
+
+  body.dark-mode & {
+    color: getColor(a, "dark");
+  }
 }

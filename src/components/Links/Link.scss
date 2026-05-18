@@ -10,7 +10,7 @@
   padding-top: $measure;
 
 
-  a {
+  & a {
     width: max-content;
     margin-right: $measure * 5;
     transition: .7s;

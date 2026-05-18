@@ -16,7 +16,8 @@ export interface LinksPayload extends Payload {
 
 export interface LinkPayload {
   href?: string,
-  text: string,
+  text?: string,
+  textClassname?: string,
   onClick?(): unknown,
   [key: string]: unknown
 }
@@ -28,9 +29,9 @@ function Link(payload: LinksPayload) {
     <div id={id} className={linksClass}>
       <>
         {list.map((link: LinkPayload, index: number) => {
-          const { href, text, onClick, ...props } = link;
-          if(onClick) return <a key={index} onClick={onClick} {...props}>{text}</a>
-          return <a key={index} href={href} {...props}>{text}</a>
+          const { href, text, textClassname, onClick, ...props } = link;
+          if(onClick) return <a key={index} onClick={onClick} {...props}><i className={textClassname}>{text}</i></a>
+          return <a key={index} href={href} {...props}><i className={textClassname}>{text}</i></a>
         })}
       </>
     </div>
