@@ -1,6 +1,6 @@
-
+import type { PayloadWithChildren } from "@interfaces/payload";
 import "./Stack.scss";
-import type { PayloadWithChildren } from "@/interfaces/payload";
+
 
 interface StackPayload extends PayloadWithChildren {
   fullPage?: boolean,

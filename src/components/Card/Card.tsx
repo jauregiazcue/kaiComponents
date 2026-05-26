@@ -1,11 +1,9 @@
-
+import type { Payload } from "@interfaces/payload";
 import Link, { type LinksPayload } from "@components/Links/Link";
-import "./Card.scss";
-import type { Payload } from "@/interfaces/payload";
 
+import "./Card.scss";
 
 export interface CardPayload extends Payload {
-  /** The text to display inside the button */
   title: string;
   subtitle?: string;
   description: string;

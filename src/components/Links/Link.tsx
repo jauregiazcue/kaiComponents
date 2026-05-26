@@ -1,4 +1,4 @@
-import type { Payload } from "@/interfaces/payload";
+import type { Payload } from "@interfaces/payload";
 import "./Link.scss";
 
 const LinkType = {

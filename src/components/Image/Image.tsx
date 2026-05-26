@@ -1,4 +1,4 @@
-import type { Payload } from "@/interfaces/payload";
+import type { Payload } from "@interfaces/payload";
 import "./Image.scss";
 
 export interface ImagePayload extends Payload {

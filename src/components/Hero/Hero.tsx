@@ -1,6 +1,8 @@
-import "./Hero.scss";
+import type { PayloadWithChildren } from "@interfaces/payload";
 import Image from "@components/Image/Image";
-import type { PayloadWithChildren } from "@/interfaces/payload";
+import "./Hero.scss";
+
+
 
 
 const HeroType = {

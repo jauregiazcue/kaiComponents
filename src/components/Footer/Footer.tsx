@@ -1,8 +1,11 @@
 import { useEffect, useRef } from "react";
-import type { LinksPayload } from "../Links/Link";
-import Link from "../Links/Link";
+import type { Payload } from "@interfaces/payload";
+
+import type { LinksPayload } from "@components/Links/Link";
+import Link from "@components/Links/Link";
+
 import "./Footer.scss";
-import type { Payload } from "@/interfaces/payload";
+
 
 export interface FooterPayload extends Payload {
   links: LinksPayload,

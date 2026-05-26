@@ -1,13 +1,11 @@
-import type { Payload } from "@/interfaces/payload";
+import type { Payload } from "@interfaces/payload";
+import Card, { type CardPayload } from "@components/Card/Card";
 import "./List.scss";
-import type { CardPayload } from "../Card/Card";
-import Card from "../Card/Card";
+
 
 export interface ListPayload extends Payload {
   list: CardPayload[]
 }
-
-
 
 function List(payload: ListPayload) {
   const { list } = payload;
@@ -23,8 +21,6 @@ function List(payload: ListPayload) {
               year={year}
               description={description} />
           </li>
-
-          return
         })}
       </ol>
     </div>
