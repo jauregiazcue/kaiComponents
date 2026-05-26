@@ -5,6 +5,8 @@ import "@style/vars.scss";
 import CardGenerator from "./components/CardGenerator/CardGenerator";
 import { useState } from "react";
 import Footer from "./components/Footer/Footer";
+import List from "./components/List/List";
+import type { CardPayload } from "./components/Card/Card";
 function App() {
   const [isActive, setActive] = useState(true);
   const handleToggle = () => {
@@ -45,15 +47,53 @@ function App() {
     textClassname: "fa-brands fa-square-github",
   });
 
+  const listData: CardPayload[] = [];
+  listData.push({
+    title: "Title Ipsum",
+    year: "0000",
+    subtitle: "Mew Mew Ipsum",
+    description: "Lorem Ipsum dolores fermin weruoifberoiugfbwe ruigbweriugbweroi gbweiourgboiweq"
+  });
+  listData.push({
+    title: "Title Ipsum",
+    year: "0000",
+    subtitle: "Mew Mew Ipsum",
+    description: "Lorem Ipsum dolores fermin weruoifberoiugfbwe ruigbweriugbweroi gbweiourgboiweq"
+  });
+  listData.push({
+    title: "Title Ipsum",
+    year: "0000",
+    subtitle: "Mew Mew Ipsum",
+    description: "Lorem Ipsum dolores fermin weruoifberoiugfbwe ruigbweriugbweroi gbweiourgboiweq"
+  });
+  listData.push({
+    title: "Title Ipsum",
+    year: "0000",
+    subtitle: "Mew Mew Ipsum",
+    description: "Lorem Ipsum dolores fermin weruoifberoiugfbwe ruigbweriugbweroi gbweiourgboiweq"
+  });
+  listData.push({
+    title: "Title Ipsum",
+    year: "0000",
+    subtitle: "Mew Mew Ipsum",
+    description: "Lorem Ipsum dolores fermin weruoifberoiugfbwe ruigbweriugbweroi gbweiourgboiweq"
+  });
+  listData.push({
+    title: "Title Ipsum",
+    year: "0000",
+    subtitle: "Mew Mew Ipsum",
+    description: "Lorem Ipsum dolores fermin weruoifberoiugfbwe ruigbweriugbweroi gbweiourgboiweq"
+  });
+
   return (
     <>
       {/** NAV BAR */}
       <Link type={LinkType.navbar} list={[
-        { href: "#hero", textClassname:"fa-solid fa-house"},
-        { href: "#project",  textClassname:"fa-solid fa-file" },
-        { href: "#experience",  textClassname:"fa-solid fa-handshake" },
-        { href: "#contact",  textClassname:"fa-solid fa-address-book" },
-        { onClick: handleToggle, textClassname:"fa-solid fa-circle-half-stroke" }
+        { href: "#hero", textClassname: "fa-solid fa-house" },
+        { href: "#project", textClassname: "fa-solid fa-file" },
+        { href: "#experience", textClassname: "fa-solid fa-handshake" },
+        { href: "#contact", textClassname: "fa-solid fa-address-book" },
+        { onClick: handleToggle, textClassname: "fa-solid fa-circle-half-stroke" }
       ]} />
       {/** HERO */}
       <Hero title="Kai Jauregi" url={HeroImage}
@@ -63,6 +103,10 @@ function App() {
         <Link list={data} type={LinkType.simple} />
       </Hero>
       <CardGenerator id="project" />
+      <section>
+        <List list={listData} />
+      </section>
+
       <Footer id="contact"
         links={{ list: footerData, type: LinkType.simple }}
         owner={"Kai Jauregi Azcue"}
