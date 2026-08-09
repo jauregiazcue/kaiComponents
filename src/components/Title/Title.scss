@@ -1,0 +1,23 @@
+@use "@style/vars.scss" as *;
+
+.title {
+  text-align: center;
+  padding: $measure * 8;
+
+  background-color: getColor(e, "light");
+
+  body.dark-mode & {
+    background-color: getColor(b, "dark");
+  }
+}
+
+.title-a {
+  text-align: center;
+  padding: $measure * 8;
+  background-color: getColor(e,"light");
+  
+
+  body.dark-mode & {
+    background-color: getColor(b, "dark");
+  }
+}

@@ -37,6 +37,10 @@
 .hero-c {
   @include hero();
   $biColor : getColor(a, "dark");
+  & i {
+    color: getColor(a, "dark") !important;
+  }
+
 
   body.dark-mode & {
     $biColorDark : getColor(d, "light");
@@ -59,16 +63,40 @@
     transparent calc(100% - 1px),
     $biColor calc(100% - 1px));
 
+  @include mobile {
+    background-color: getColor(f, "dark");
+    background-image: none;
+
+    body.dark-mode & {
+      background-color: getColor(e, "dark");
+      background-image: none;
+    }
+  }
+
   background-size: 5vw 5vw;
   overflow: hidden;
 
+
+
+
   &--spotlight {
     margin: 0;
-    background: radial-gradient(circle at center, rgba(0, 0, 0, 0) 0%, black 100%);
+    background: radial-gradient(circle at center, rgba(0, 0, 0, 0) 10%, black 80%);
     z-index: 1;
+    
 
     @include mobile {
-      background: radial-gradient(circle at center, rgba(0, 0, 0, 0) 0%, black 60%);
+
+      & h1,
+      h2,
+      h3 {
+        color: getColor(c, "light");
+        padding-bottom: $measure * 1.5;
+      }
+      & p,
+      i {
+        color: getColor(c, "light");
+      }
     }
   }
 }

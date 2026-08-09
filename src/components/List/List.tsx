@@ -1,5 +1,5 @@
 import type { Payload } from "@interfaces/payload";
-import Card, { type CardPayload } from "@components/Card/Card";
+import Card, { CardType, type CardPayload } from "@components/Card/Card";
 import "./List.scss";
 
 
@@ -14,12 +14,14 @@ function List(payload: ListPayload) {
     <div className="list">
       <ol>
         {list.map((listObject: CardPayload, index: number) => {
-          const { title, year, subtitle, description } = listObject;
+          const { head, body, image } = listObject;
           return <li key={index}>
-            <Card key={index} title={title}
-              subtitle={subtitle}
-              year={year}
-              description={description} />
+
+            <Card key={index}
+              type={CardType.sizeless}
+              head={head}
+              body={body}
+              image={image} />
           </li>
         })}
       </ol>

@@ -1,12 +1,21 @@
 @use "@style/vars.scss" as *;
+@use "@style/media.scss" as *;
 
 .list {
   margin: $measure;
   border-radius: $border-radius-b;
 
+  @include mobile {
+    width: 100%;
+  }
+
   & .card {
     max-height: none;
     width: 70vw;
+
+    @include mobile {
+      width: 100%;
+    }
   }
 
   & li {
@@ -14,15 +23,19 @@
     $paddingSize : $measure * 2;
     $paddingCircle: -($borderSize + $measure * 1.2);
 
-
-    $decorColor : getColor(b, "dark");
-
+    $decorColor : getColor(h, "light");
+    $decorDarkColor : getColor(h, "dark");
     position: relative;
     display: flex;
     flex-direction: column;
 
     padding-left: $paddingSize;
     padding-bottom: $measure * 2;
+
+    @include mobile {
+      width: 100%;
+      padding-left: 0;
+    }
 
     &::after {
       content: "";
@@ -33,11 +46,20 @@
       color: transparent;
       height: $measure * 2;
       width: $measure * 2;
-      background: getColor(c, "dark");
+      background: getColor(e, "light");
 
       border-radius: 100%;
       margin-top: $measure * 2.5;
       border: $borderSize solid $decorColor;
+
+      body.dark-mode & {
+        border: $borderSize solid $decorDarkColor;
+        background: getColor(b, "dark");
+      }
+
+      @include mobile {
+        display: none;
+      }
     }
 
     &::before {
@@ -47,10 +69,18 @@
       top: 0;
       display: inline-block;
       color: transparent;
-      height: 110%;
-      background: getColor(c, "dark");
+      height: 130%;
 
-      border: $borderSize * .5 solid $decorColor ;
+      border: $borderSize * .5 solid $decorColor;
+
+      body.dark-mode & {
+        border: $borderSize * .5 solid $decorDarkColor;
+      }
+
+      @include mobile {
+        display: none;
+
+      }
     }
 
     &:first-child::before {
@@ -63,6 +93,10 @@
 
       &::before {
         border: none;
+
+        body.dark-mode & {
+          border: none;
+        }
       }
     }
   }

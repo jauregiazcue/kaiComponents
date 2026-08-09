@@ -86,6 +86,7 @@ video {
   border: 0;
   font-size: 100%;
   font: inherit;
+  font-family: $type-a;
   vertical-align: baseline;
 }
 
@@ -106,9 +107,11 @@ section {
 
 body {
   line-height: 1;
+  overflow-x: hidden;
+  background-color: getColor(e, "light");
 
-  &.dark-mode  {
-    background-color: getColor(e, "dark");
+  &.dark-mode {
+    background-color: getColor(b, "dark");
   }
 }
 
@@ -152,6 +155,14 @@ html {
 
 .fa-brands {
   font-size: xx-large;
+
+  body.dark-mode & {
+    color: getColor(a, "dark");
+  }
+}
+
+.fa-solid {
+  font-size: x-large;
 
   body.dark-mode & {
     color: getColor(a, "dark");
